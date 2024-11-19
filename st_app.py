@@ -25,8 +25,8 @@ with open("logr_std_model.pkl", "rb") as f:
 with open("data_pipe.pkl","rb") as f:
     data_pipe=pickle.load(f)
 
-cols=['Gender', 'Age','Neighbourhood', 'Scholarship', 
-            'Hipertension','Diabetes', 'Alcoholism', 'Handcap', 'SMS_received',
+cols=['Gender', 'Age', 'Neighbourhood', 'Scholarship',
+            'Hipertension','Diabetes', 'Alcoholism', 'Handicap', 'SMS_received',
             'ScheduledDay_Month', 'ScheduledDay_Day_Of_Month',
             'ScheduledDay_Day_Of_Week', 'AppointmentDay_Month',
             'AppointmentDay_Day_Of_Month', 'AppointmentDay_Day_Of_Week']
@@ -116,7 +116,7 @@ elif section == "Prediction":
     model_choice = st.sidebar.selectbox("Choose Model for Prediction", ["Logistic Regression", "Random Forest"])
     model = logr_model if model_choice == "Logistic Regression" else rf_model
     input_df = pd.DataFrame([input_data])
-    for col in ['Scholarship', 'Hipertension','Diabetes', 'Alcoholism', 'SMS_received']:
+    for col in ['Scholarship', 'Hypertension','Diabetes', 'Alcoholism', 'SMS_received']:
     
         input_df[col]=input_df[col].replace({'No':0,'Yes':1})
         
@@ -162,7 +162,7 @@ elif section == "Feature Importance":
         sns.barplot(x='coefficient', y='feature', data=feature_importance_df)
         st.pyplot()
 
-    # # Partial Dependence Plots (Placeholder, requires model-specific implementation)
-    # if st.sidebar.checkbox("Show Partial Dependence Plots"):
-    #     st.write("Partial Dependence Plots (currently not implemented)")
-    #     # Implement PDP here if desired
+    # Partial Dependence Plots (Placeholder, requires model-specific implementation)
+    if st.sidebar.checkbox("Show Partial Dependence Plots"):
+        st.write("Partial Dependence Plots (currently not implemented)")
+        # Implement PDP here if desired
