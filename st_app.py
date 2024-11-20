@@ -115,8 +115,7 @@ elif section == "Prediction":
     model_choice = st.sidebar.selectbox("Choose Model for Prediction", ["Logistic Regression", "Random Forest"])
     model = logr_model if model_choice == "Logistic Regression" else rf_model
     input_df = pd.DataFrame([input_data])
-    for col in ['Scholarship', 'Hypertension','Diabetes', 'Alcoholism', 'SMS_received']:
-    
+    for col in ['Scholarship', 'Hipertension','Diabetes', 'Alcoholism', 'SMS_received']:
         input_df[col]=input_df[col].replace({'No':0,'Yes':1})
         
     x=data_pipe.transform(input_df)
